@@ -1,0 +1,2 @@
+ALTER TABLE invitations
+MODIFY COLUMN token_hash VARCHAR(64) NULL;
