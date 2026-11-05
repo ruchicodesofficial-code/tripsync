@@ -9,6 +9,5 @@ import java.util.Optional;
 public interface ActivityRepository extends JpaRepository<Activity,Long> {
 
     List<Activity> findByItineraryIdOrderByDisplayOrderAsc(Long itineraryId);
-    List<Activity> findByItineraryTripOrderByDisplayOrderAsc(Long tripId);
     Optional<Activity> findByIdAndItineraryId(Long id, Long itineraryId);
 }

@@ -110,7 +110,7 @@ public class ItineraryService {
         Trip trip = getTrip(tripId);
         requireTripAccess(trip,user);
         Itinerary itinerary = getItineraryForTrip(tripId,itineraryId);
-        return activityRepository.findByItineraryTripOrderByDisplayOrderAsc(itinerary.getId())
+        return activityRepository.findByItineraryIdOrderByDisplayOrderAsc(itinerary.getId())
                 .stream()
                 .map(this::toActivityResponse)
                 .toList();
