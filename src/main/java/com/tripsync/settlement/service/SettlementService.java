@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class SettlementService {
@@ -52,6 +54,7 @@ public class SettlementService {
         settlement.setPayee(payee);
         settlement.setAmount(request.amount());
         settlement.setNote(request.note());
+        settlement.setSettleAt(LocalDateTime.now());
         return settlementRepository.save(settlement);
     }
 
