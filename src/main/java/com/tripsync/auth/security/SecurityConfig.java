@@ -38,12 +38,24 @@ public class SecurityConfig {
                 .userDetailsService(customUserDetailService)
                 .authorizeHttpRequests(auth -> auth
 
-                .requestMatchers("/auth/**",
+                .requestMatchers(
+                        "/auth/**",
                         "/error",
                         "/v3/api-docs/**",
                         "/swagger-ui/**",
                         "/swagger-ui.html",
-                        "/actuator/health").permitAll().anyRequest().authenticated())
+//                        actuator endpoints
+                        "/actuator/health",
+                        "/actuator/health/**",
+                        "/actuator/prometheus"
+                        ).permitAll()
+                        .requestMatchers(
+                                "/actuator/info",
+                                "/actuator/metrics",
+                                "/actuator/metrics/**"
+                        ).hasRole("ADMIN")
+
+                        .anyRequest().authenticated())
 
 
                 .addFilterBefore(
